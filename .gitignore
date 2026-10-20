@@ -1,0 +1,46 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
+
+# Env / secrets
+.env
+.env.*
+
+# TypeScript / Node
+node_modules/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+npm-debug.log*
+
+# Rust
+target/
+**/*.rs.bk
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Hare
+Hare/hello
+Hare/hare/
+Hare/harec/
+Hare/qbe/
+
+# Go / C / misc compiled output
+*.o
+*.a
+*.so
+*.out
+*.exe

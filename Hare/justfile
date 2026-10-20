@@ -1,0 +1,7 @@
+default: run
+
+build:
+	hare build -o hello main.ha
+
+run:
+	hare run main.ha
