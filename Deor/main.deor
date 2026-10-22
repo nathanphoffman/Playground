@@ -1,0 +1,8 @@
+fn void main()
+    print("Hello, world!")
+    
+    int num = 1
+
+    for if num < 10
+        num = num + 1
+        print(num)

@@ -16,6 +16,8 @@ Each language lives in its own folder:
 | `CSharp/` | C# | dotnet; `just csharp` |
 | `Fortran/` | Fortran | gfortran; `just fortran` |
 | `Go/` | Go | `just go` |
+| `Deor/` | Deor | transpiles to Rust; `just deor` |
+| `Rexx/` | Rexx | Regina interpreter (`sudo apt install regina-rexx`); `just rexx` |
 | `Python/` | Python | (coming soon) |
 
 More languages may be added over time.

@@ -24,3 +24,9 @@ csharp:
 
 go:
 	cd Go && go run .
+
+deor:
+	cd Deor && deor main.deor main.rs && rustc main.rs -o hello && ./hello
+
+rexx:
+	cd Rexx && rexx main.rexx
