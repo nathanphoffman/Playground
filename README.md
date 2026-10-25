@@ -18,7 +18,8 @@ Each language lives in its own folder:
 | `Go/` | Go | `just go` |
 | `Deor/` | Deor | transpiles to Rust; `just deor` |
 | `Rexx/` | Rexx | Regina interpreter (`sudo apt install regina-rexx`); `just rexx` |
-| `Python/` | Python | (coming soon) |
+| `Python/` | Python | python3; `just python` |
+| `Zig/` | Zig | zig; `just zig` |
 
 More languages may be added over time.
 

@@ -30,3 +30,9 @@ deor:
 
 rexx:
 	cd Rexx && rexx main.rexx
+
+python:
+	cd Python && python3 main.py
+
+zig:
+	cd Zig && zig run main.zig
