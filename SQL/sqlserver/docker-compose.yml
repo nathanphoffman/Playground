@@ -1,0 +1,5 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment: { ACCEPT_EULA: "Y", MSSQL_SA_PASSWORD: "Passw0rd!Playground" }
+    ports: ["1433:1433"]

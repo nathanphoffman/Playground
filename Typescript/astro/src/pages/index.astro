@@ -1,0 +1,10 @@
+---
+// This block runs at build time (or on the server), never in the browser.
+const items = ["Zero JS by default", "Islands architecture", "Write .astro, .md or use React/Vue inside"];
+---
+<html lang="en">
+  <body>
+    <h1>Hello, Astro</h1>
+    <ul>{items.map((i) => <li>{i}</li>)}</ul>
+  </body>
+</html>

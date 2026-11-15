@@ -1,0 +1,1 @@
+{"name":"dynamodb-demo","private":true,"version":"0.0.0","type":"module","scripts":{"start":"node src/index.ts","typecheck":"tsc"},"dependencies":{"@aws-sdk/client-dynamodb":"^3.1169.0"},"devDependencies":{"@types/node":"^26.6.6","typescript":"^7.0.2"}}

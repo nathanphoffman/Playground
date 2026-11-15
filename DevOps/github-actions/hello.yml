@@ -1,0 +1,9 @@
+# GitHub only runs workflows from <repo root>/.github/workflows/. Copy this file there to try it.
+name: hello
+on: [push]
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Hello, GitHub Actions (CI/CD)"

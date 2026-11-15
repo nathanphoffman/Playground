@@ -1,0 +1,10 @@
+<!doctype html>
+<html><body>
+  <h1>Hello, Electron</h1>
+  <p>Chrome <span id="c"></span>, Node <span id="n"></span></p>
+  <script>
+    // The "renderer" is a web page. Node access goes through a preload script (see Electron docs on contextBridge).
+    document.getElementById("c").textContent = navigator.userAgent.match(/Chrome\/([\d.]+)/)[1];
+    document.getElementById("n").textContent = "(main process only)";
+  </script>
+</body></html>

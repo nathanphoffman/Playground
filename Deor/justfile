@@ -1,0 +1,3 @@
+# Installs the latest deor transpiler and pulls the latest libs (lib/) and spec (deor_specification/) into this folder.
+update:
+    curl -sSf https://raw.githubusercontent.com/nathanphoffman/DeorLang/main/setup/update.sh | sh -s -- "{{justfile_directory()}}"

@@ -1,0 +1,11 @@
+services:
+  nginx:
+    image: nginx:alpine
+    ports: ["8088:80"]
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./html:/usr/share/nginx/html:ro
+    depends_on: [api]
+  api:
+    image: hashicorp/http-echo   # a tiny fake backend that replies with the text below
+    command: ["-text=Hello from the backend (via the nginx proxy)"]

@@ -26,7 +26,7 @@ go:
 	cd Go && go run .
 
 deor:
-	cd Deor && deor main.deor main.rs && rustc main.rs -o hello && ./hello
+	cd Deor && DEOR_LIB=lib deor main.deor main.rs && rustc main.rs -o hello && ./hello
 
 rexx:
 	cd Rexx && rexx main.rexx
@@ -36,3 +36,20 @@ python:
 
 zig:
 	cd Zig && zig run main.zig
+
+deor-update:
+	cd Deor && just update
+
+# Install dependencies for every pnpm project in the playground
+install-all:
+	find . -name package.json -not -path '*/node_modules/*' -not -path './Typescript/package.json' -execdir pnpm install \;
+
+# Build every C# project in CSharp/
+dotnet-build-all:
+	for p in CSharp/*/*.csproj; do dotnet build $p || exit 1; done
+
+php:
+	cd PHP && just run
+
+sql-pg:
+	cd SQL && just pg

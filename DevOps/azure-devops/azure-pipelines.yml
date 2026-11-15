@@ -1,0 +1,10 @@
+# Azure DevOps reads this from the repo root (or wherever you point the pipeline at it).
+trigger: [main]
+pool:
+  vmImage: ubuntu-latest
+steps:
+  - script: echo "Hello, Azure Pipelines"
+    displayName: Say hello
+  - task: UseDotNet@2
+    inputs: { version: 10.x }
+  - script: dotnet --info

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "tauri-demo",
+  "version": "0.1.0",
+  "identifier": "dev.playground.tauridemo",
+  "build": { "frontendDist": "../ui" },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [{ "title": "Hello Tauri", "width": 600, "height": 400 }]
+  },
+  "bundle": { "active": false }
+}

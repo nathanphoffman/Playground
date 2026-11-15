@@ -1,0 +1,8 @@
+# LocalStack = fake AWS (SQS, Secrets Manager, Lambda, ...) on localhost:4566.
+# Newer LocalStack versions may ask for a (free) auth token: set LOCALSTACK_AUTH_TOKEN if it refuses to start.
+services:
+  localstack:
+    image: localstack/localstack
+    ports: ["4566:4566"]
+    environment:
+      LOCALSTACK_AUTH_TOKEN: ${LOCALSTACK_AUTH_TOKEN:-}

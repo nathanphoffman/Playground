@@ -1,0 +1,1 @@
+{"name":"fastify-demo","private":true,"version":"0.0.0","type":"module","scripts":{"start":"node src/index.ts","typecheck":"tsc"},"dependencies":{"fastify":"^5.12.8"},"devDependencies":{"@types/node":"^26.6.6","typescript":"^7.0.2"}}

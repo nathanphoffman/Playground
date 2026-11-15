@@ -1,0 +1,6 @@
+# PHP isn't installed locally, so run it through Docker.
+run:
+	docker run --rm -v "$PWD":/app -w /app php:8-cli php index.php
+
+serve:
+	docker run --rm -p 8080:8080 -v "$PWD":/app -w /app php:8-cli php -S 0.0.0.0:8080

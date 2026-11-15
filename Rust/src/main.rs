@@ -48,22 +48,21 @@ fn main() {
 }
 
 
-fn are_closings_valid(&str string_with_closings) -> bool {
+fn are_closings_valid(string_with_closings: &str) -> bool {
 
-    let recorded_openings: Vec<&str> = Vec::new();
+    let mut recorded_openings: Vec<char> = Vec::new();
 
-    let possible_openings = vec!["(","[","{"];
-    let possible_endings = vec![")","]","}"];
+    let possible_openings = vec!['(','[','{'];
+    let possible_endings = vec![')',']','}'];
 
     for chr in string_with_closings.chars() {
         if recorded_openings.contains(&chr) {
             recorded_openings.push(chr);
         }
-
     }
-    
+
+    return true;
 
 }
-
 
 

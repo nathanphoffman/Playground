@@ -7,4 +7,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <!-- Sub-folders are their own projects; don't compile them into this one. -->
+  <ItemGroup>
+    <Compile Remove="*/**" />
+    <EmbeddedResource Remove="*/**" />
+    <None Remove="*/**" />
+  </ItemGroup>
+
 </Project>

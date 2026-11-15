@@ -1,0 +1,11 @@
+$brand: #6a5acd;
+
+@mixin card($pad) {
+  padding: $pad;
+  border: 2px solid $brand;
+}
+
+.card {
+  @include card(1rem);
+  h1 { color: $brand; } // nesting
+}

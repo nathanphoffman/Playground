@@ -1,0 +1,12 @@
+{
+  "name": "gulp-demo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "gulp"
+  },
+  "devDependencies": {
+    "gulp": "^5.0.1"
+  }
+}

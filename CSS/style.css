@@ -1,0 +1,10 @@
+:root { --brand: rebeccapurple; }
+
+.box {
+  display: grid;
+  place-items: center;
+  height: 50vh;
+  border: 3px solid var(--brand);
+}
+
+.box:hover { background: color-mix(in srgb, var(--brand) 20%, white); }

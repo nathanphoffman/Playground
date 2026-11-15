@@ -1,0 +1,19 @@
+# Each database runs in Docker. Start one, run hello.sql against it, then stop it.
+
+pg:
+	cd postgres && docker compose up -d && sleep 8
+	cd postgres && docker compose exec -T postgres psql -U postgres -d playground < ../hello.sql
+	cd postgres && docker compose down
+
+mysql:
+	cd mysql && docker compose up -d && sleep 25
+	cd mysql && docker compose exec -T mysql mysql -uroot -pmysql playground < ../hello.sql
+	cd mysql && docker compose down
+
+sqlserver:
+	cd sqlserver && docker compose up -d && sleep 20
+	cd sqlserver && docker compose exec -T sqlserver /opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P 'Passw0rd!Playground' < ../hello.sql
+	cd sqlserver && docker compose down
+
+sqlite:
+	cd sqlite && python3 run.py

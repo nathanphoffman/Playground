@@ -1,3 +1,5 @@
+import "lib/optional.deor" where T = string
+
 fn void main()
     print("Hello, world!")
     
@@ -6,3 +8,35 @@ fn void main()
     for if num < 10
         num = num + 1
         print(num)
+
+    # new way
+    for idx in range(10)
+        print(idx)                
+
+
+    list_people as ["nathan","john"]
+
+    # new way
+    for idx in range(len(list_people))
+        if idx is 0
+            continue
+        
+        print(list_people at idx)
+
+
+    # old way
+    const int START = 1
+    const int END = len(list_people)
+
+    for idx in range(START,END)
+        print(list_people at idx)
+
+
+    for person in list_people
+        print(person)
+
+
+    optional_string as o_string_some("Hello")
+    none_string as o_string_none()
+    
+    

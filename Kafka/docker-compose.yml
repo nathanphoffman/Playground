@@ -1,0 +1,4 @@
+services:
+  kafka:
+    image: apache/kafka:latest   # single node, KRaft mode (no ZooKeeper)
+    ports: ["9092:9092"]
