@@ -13,7 +13,7 @@ Each language lives in its own folder:
 | `Hare/` | Hare | `justfile` for build/run; includes local checkouts of `hare`, `harec`, `qbe` |
 | `Mojo/` | Mojo | installed in a local `.venv` via `uv`; `just mojo` |
 | `C/` | C | gcc; `just c` |
-| `CSharp/` | C# | dotnet; `just csharp` |
+| `CSharp/` | C# | dotnet; `just csharp`. Demos are grouped in `web/`, `data/`, `cloud/`, `libraries/` and `testing/` |
 | `Fortran/` | Fortran | gfortran; `just fortran` |
 | `Go/` | Go | `just go` |
 | `Flutter/` | Flutter (Dart) | needs the Flutter SDK (not installed) |

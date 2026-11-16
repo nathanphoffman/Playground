@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-// Needs Postgres running: cd ../../SQL/postgres && docker compose up -d
+// Needs Postgres running: cd ../../../SQL/postgres && docker compose up -d
 using var db = new AppDb();
 await db.Database.EnsureCreatedAsync(); // for real projects you'd use migrations (dotnet ef)
 
