@@ -1,0 +1,1 @@
+{"name":"prisma-demo","private":true,"version":"0.0.0","type":"module","scripts":{"generate":"prisma generate","start":"node src/index.ts","typecheck":"tsc"},"dependencies":{"@prisma/adapter-libsql":"^7.10.1","@prisma/client":"^7.10.1"},"devDependencies":{"@types/node":"^26.6.6","prisma":"7.10.1","typescript":"^7.0.2"}}

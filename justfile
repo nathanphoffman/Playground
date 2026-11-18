@@ -503,3 +503,43 @@ tauri:
 [group('flutter')]
 flutter:
 	cd Flutter && flutter run -d chrome
+
+[group('typescript')]
+angular:
+	cd Typescript/angular && pnpm install && pnpm dev
+
+[group('typescript')]
+svelte:
+	cd Typescript/svelte && pnpm install && pnpm dev
+
+[group('node')]
+express:
+	cd Typescript/node/express && pnpm install && pnpm start
+
+[group('node')]
+prisma:
+	cd Typescript/node/prisma && pnpm install && pnpm generate && pnpm prisma db push && pnpm start
+
+[group('php')]
+laravel:
+	cd PHP && just laravel
+
+[group('rust')]
+axum:
+	cd Rust/axum && cargo run
+
+[group('go')]
+gin:
+	cd Go/gin && go run .
+
+[group('python')]
+pytest:
+	cd Python/pytest && uv run pytest -v
+
+[group('python')]
+sqlalchemy:
+	cd Python/sqlalchemy && uv run main.py
+
+[group('devops')]
+prometheus-grafana:
+	cd DevOps/prometheus-grafana && docker compose up

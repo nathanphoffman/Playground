@@ -1,0 +1,1 @@
+{ "compilerOptions": { "target": "esnext", "module": "esnext", "moduleResolution": "bundler", "lib": ["esnext", "dom"], "types": ["svelte"], "noEmit": true, "strict": true, "verbatimModuleSyntax": true, "skipLibCheck": true }, "include": ["src"] }
