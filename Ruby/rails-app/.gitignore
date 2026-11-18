@@ -1,0 +1,7 @@
+/log/*
+/tmp/*
+/storage/*
+/db/*.sqlite3*
+/public/assets
+.bundle
+/config/*.key

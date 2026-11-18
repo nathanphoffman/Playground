@@ -1,0 +1,5 @@
+services:
+  oracle:
+    image: gvenzl/oracle-free:slim-faststart   # Oracle Database Free, small image
+    environment: { ORACLE_PASSWORD: "Passw0rd" }
+    ports: ["1521:1521"]

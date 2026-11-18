@@ -620,3 +620,99 @@ junit-mockito:
 [group('java')]
 quarkus:
 	cd Java && ./mvn.sh quarkus -p 8080 quarkus:dev -Dquarkus.http.host=0.0.0.0 -Dquarkus.console.enabled=false
+
+[group('kotlin')]
+kotlin:
+	cd Kotlin && ./gradle.sh hello run
+
+[group('kotlin')]
+ktor:
+	cd Kotlin && ./gradle.sh ktor -p 8080 run
+
+# Runs in Docker, see Ruby/rails.sh. First time: set up the database (see its README)
+[group('ruby')]
+rails:
+	cd Ruby && ./rails.sh rails-app -p 3000 bin/rails server -b 0.0.0.0
+
+[group('java')]
+spring-security:
+	cd Java && ./mvn.sh spring-security -p 8080 spring-boot:run
+
+[group('auth')]
+keycloak:
+	cd Auth/keycloak && docker compose up -d && pnpm install && pnpm start
+
+[group('web')]
+identity:
+	cd CSharp/web/identity && dotnet run
+
+[group('web')]
+grpc-csharp:
+	cd CSharp/web/grpc && dotnet run
+
+[group('go')]
+grpc-server:
+	cd Go/grpc && go run ./server
+
+[group('go')]
+grpc-client:
+	cd Go/grpc && go run ./client Nate
+
+[group('node')]
+grpc-node-server:
+	cd Typescript/node/grpc && pnpm install && pnpm server
+
+[group('node')]
+grpc-node-client:
+	cd Typescript/node/grpc && pnpm client
+
+[group('vue')]
+pinia:
+	cd Typescript/vue/pinia && pnpm install && pnpm dev
+
+[group('vue')]
+vue-router:
+	cd Typescript/vue/router && pnpm install && pnpm dev
+
+[group('vue')]
+vuetify:
+	cd Typescript/vue/vuetify && pnpm install && pnpm dev
+
+[group('vue')]
+primevue:
+	cd Typescript/vue/primevue && pnpm install && pnpm dev
+
+# Vitest + Vue Test Utils + accessibility (axe) tests
+[group('vue')]
+vue-testing:
+	cd Typescript/vue/testing && pnpm install && pnpm test
+
+[group('database')]
+sql-oracle:
+	cd SQL && just oracle
+
+[group('database')]
+sql-advanced-pg:
+	cd SQL && just advanced-pg
+
+[group('web')]
+application-insights:
+	cd CSharp/cloud/application-insights && dotnet run
+
+# Needs an Azure Event Grid topic, see its README
+[group('cloud')]
+eventgrid:
+	cd CSharp/cloud/azure-eventgrid && dotnet run
+
+[group('libraries')]
+ddd:
+	cd CSharp/patterns/ddd && dotnet run
+
+# Full-stack todo app: run both, in two terminals
+[group('fullstack')]
+fullstack-api:
+	cd FullStack/api && dotnet run --urls http://localhost:5100
+
+[group('fullstack')]
+fullstack-web:
+	cd FullStack/web && pnpm install && pnpm dev

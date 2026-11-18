@@ -1,0 +1,27 @@
+{
+  "realm": "playground",
+  "enabled": true,
+  "clients": [
+    {
+      "clientId": "playground-app",
+      "publicClient": true,
+      "directAccessGrantsEnabled": true,
+      "standardFlowEnabled": true,
+      "redirectUris": ["http://localhost:*"],
+      "webOrigins": ["+"]
+    }
+  ],
+  "roles": { "realm": [{ "name": "admin" }] },
+  "users": [
+    {
+      "username": "nate",
+      "enabled": true,
+      "email": "nate@example.com",
+      "firstName": "Nate",
+      "lastName": "Example",
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "password", "temporary": false }],
+      "realmRoles": ["admin"]
+    }
+  ]
+}

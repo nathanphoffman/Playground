@@ -17,3 +17,20 @@ sqlserver:
 
 sqlite:
 	cd sqlite && python3 run.py
+
+oracle:
+	cd oracle && docker compose up -d
+	cd oracle && until docker compose exec -T oracle bash -c "echo 'SELECT 1 FROM dual;' | sqlplus -s system/Passw0rd@//localhost/FREEPDB1 | grep -qE '^[[:space:]]+1$'"; do sleep 5; done
+	cd oracle && docker compose exec -T oracle sqlplus -s system/Passw0rd@//localhost/FREEPDB1 < hello.sql
+	cd oracle && docker compose down
+
+# Joins, CTEs, window functions, indexes, transactions
+advanced-pg:
+	cd postgres && docker compose up -d && sleep 8
+	cd postgres && docker compose exec -T postgres psql -U postgres -d playground < ../advanced.sql
+	cd postgres && docker compose down
+
+advanced-sqlserver:
+	cd sqlserver && docker compose up -d && sleep 20
+	cd sqlserver && docker compose exec -T sqlserver /opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P 'Passw0rd!Playground' < ../advanced.sql
+	cd sqlserver && docker compose down
