@@ -1,0 +1,3 @@
+# Defaults. Override them with `--set replicas=3` or `-f my-values.yaml`.
+replicas: 2
+image: nginx:alpine

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <!-- These become the package's metadata on nuget.org -->
+    <PackageId>Playground.Greeter</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Nate</Authors>
+    <Description>A tiny library packed as a NuGet package</Description>
+  </PropertyGroup>
+
+</Project>

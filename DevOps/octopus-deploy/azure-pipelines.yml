@@ -1,0 +1,27 @@
+# Azure DevOps builds and packages the app; Octopus Deploy takes over for releases.
+# Needs two pipeline variables: OCTOPUS_URL and OCTOPUS_API_KEY (mark the key as secret).
+trigger: [main]
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  packageId: Playground.MinimalApi
+  version: 1.0.$(Build.BuildId)
+
+steps:
+  - task: UseDotNet@2
+    inputs: { version: 10.x }
+
+  - script: dotnet publish CSharp/web/minimal-api -c Release -o publish
+    displayName: Publish app
+
+  - script: |
+      curl -sSfL https://github.com/OctopusDeploy/cli/releases/latest/download/octopus_Linux_x86_64.tar.gz | tar xz octopus
+      ./octopus package zip create --id $(packageId) --version $(version) --base-path publish --out-folder out
+      ./octopus package upload --package out/$(packageId).$(version).zip --server $(OCTOPUS_URL) --api-key $(OCTOPUS_API_KEY)
+    displayName: Package and push to Octopus
+
+  # Creates a release and deploys it to the first environment (e.g. Dev). Promotion to Test/Prod is done in Octopus.
+  - script: |
+      ./octopus release create --project "Minimal API" --version $(version) --package "$(packageId):$(version)" --environment Dev --server $(OCTOPUS_URL) --api-key $(OCTOPUS_API_KEY) --no-prompt
+    displayName: Create release and deploy

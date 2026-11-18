@@ -1,0 +1,14 @@
+@page
+@model IndexModel
+<h1>Hello, Razor Pages</h1>
+<p>The time on the server is @Model.Now.ToString("T").</p>
+
+<form method="post">
+    <input name="Name" value="@Model.Name" placeholder="Your name" />
+    <button>Greet</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Greeting))
+{
+    <p><strong>@Model.Greeting</strong></p>
+}

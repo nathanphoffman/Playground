@@ -21,6 +21,7 @@ Each language lives in its own folder:
 | `Rexx/` | Rexx | Regina interpreter (`sudo apt install regina-rexx`); `just rexx` |
 | `Python/` | Python | python3; `just python`. FastAPI, Flask, Django and pandas are in sub-folders (uv) |
 | `Zig/` | Zig | zig; `just zig` |
+| `Java/` | Java | Only a Java runtime is installed locally, so Maven runs in Docker via `Java/mvn.sh`. Spring Boot, Spring Data JPA, JUnit/Mockito and Quarkus are in sub-folders |
 
 | `HTML/`, `CSS/`, `JavaScript/` | Web basics | `CSS/` holds Bootstrap and Tailwind; `JavaScript/` holds jQuery |
 | `SQL/`, `PHP/` | SQL, PHP | Databases and PHP run in Docker |

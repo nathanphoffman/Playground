@@ -8,3 +8,6 @@ serve:
 # Laravel runs in Docker too. The image needs the sqlite extension, which php:8-cli includes.
 laravel:
 	docker run --rm -p 8000:8000 -v "$PWD/laravel":/app -w /app php:8-cli php artisan serve --host=0.0.0.0 --port=8000
+
+symfony:
+	docker run --rm -p 8001:8001 -v "$PWD/symfony":/app -w /app php:8-cli php -S 0.0.0.0:8001 -t public

@@ -44,3 +44,6 @@ Hare/qbe/
 *.so
 *.out
 *.exe
+
+# NuGet packages built by CSharp/libraries/nuget-package
+*.nupkg

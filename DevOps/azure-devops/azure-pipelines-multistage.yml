@@ -1,0 +1,56 @@
+# A pipeline with stages: build + test once, then deploy the same artifact to dev, then prod.
+# Point a pipeline at this file in Azure DevOps (Pipelines > New > Existing YAML file).
+trigger: [main]
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  buildConfiguration: Release
+  project: CSharp/web/minimal-api/MinimalApi.csproj   # adjust to the real .csproj name
+
+stages:
+  - stage: Build
+    jobs:
+      - job: BuildAndTest
+        steps:
+          - task: UseDotNet@2
+            inputs: { version: 10.x }
+
+          # NuGet packages are restored from nuget.org plus any feeds in nuget.config
+          # (an Azure Artifacts feed can be added with the NuGetAuthenticate task).
+          - script: dotnet restore $(project)
+            displayName: Restore NuGet packages
+          - script: dotnet build $(project) -c $(buildConfiguration) --no-restore
+            displayName: Build
+          - script: dotnet test $(project) -c $(buildConfiguration) --no-build --logger trx
+            displayName: Test
+            continueOnError: true   # this demo project has no tests
+
+          - script: dotnet publish $(project) -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)/app
+            displayName: Publish
+          - publish: $(Build.ArtifactStagingDirectory)/app
+            artifact: app
+
+  - stage: DeployDev
+    dependsOn: Build
+    jobs:
+      - deployment: Dev
+        environment: dev   # created in Pipelines > Environments
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - script: echo "Deploying $(Build.BuildNumber) to dev"   # artifact is downloaded to $(Pipeline.Workspace)/app
+
+  - stage: DeployProd
+    dependsOn: DeployDev
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    jobs:
+      - deployment: Prod
+        environment: prod   # add an "Approvals" check on this environment for a manual gate
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - script: echo "Deploying $(Build.BuildNumber) to prod"

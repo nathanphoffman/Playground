@@ -46,6 +46,7 @@ install-all:
 
 # Build every C# project in CSharp/
 dotnet-build-all:
+	cd CSharp/libraries/nuget-package && dotnet pack -c Release -o ../feed
 	for p in CSharp/*/*/*.csproj; do dotnet build $p || exit 1; done
 
 php:
@@ -543,3 +544,79 @@ sqlalchemy:
 [group('devops')]
 prometheus-grafana:
 	cd DevOps/prometheus-grafana && docker compose up
+
+[group('node')]
+hono:
+	cd Typescript/node/hono && pnpm install && pnpm start
+
+[group('typescript')]
+sveltekit:
+	cd Typescript/sveltekit && pnpm install && pnpm dev
+
+[group('react')]
+storybook:
+	cd Typescript/react/storybook && pnpm install && pnpm storybook
+
+# Needs 3 terminals, see its README
+[group('python')]
+celery:
+	cd Python/celery && docker compose up -d && uv run celery -A tasks worker --loglevel=info
+
+[group('python')]
+pydantic-ai:
+	cd Python/pydantic-ai && uv run main.py
+
+[group('rust')]
+sqlx:
+	cd Rust/sqlx && cargo run
+
+[group('go')]
+cobra:
+	cd Go/cobra && go run . greet Nate
+
+[group('php')]
+symfony:
+	cd PHP && just symfony
+
+[group('devops')]
+helm:
+	cd DevOps/helm-argocd && docker run --rm -v "$PWD":/w -w /w alpine/helm template demo hello
+
+[group('database')]
+rabbitmq:
+	cd RabbitMQ && docker compose up -d && pnpm install && pnpm start
+
+[group('web')]
+razor-pages:
+	cd CSharp/web/razor-pages && dotnet run
+
+# Packs the library into a local feed first, then runs the app that uses it
+[group('libraries')]
+nuget:
+	cd CSharp/libraries/nuget-package && dotnet pack -c Release -o ../feed
+	cd CSharp/libraries/nuget-consumer && dotnet run
+
+[group('libraries')]
+nservicebus:
+	cd CSharp/libraries/nservicebus && dotnet run
+
+[group('java')]
+java:
+	cd Java/hello && java Hello.java
+
+# Java projects run Maven in Docker (see Java/mvn.sh)
+[group('java')]
+spring-boot:
+	cd Java && ./mvn.sh spring-boot -p 8080 spring-boot:run
+
+[group('java')]
+spring-data-jpa:
+	cd Java && ./mvn.sh spring-data-jpa spring-boot:run
+
+[group('java')]
+junit-mockito:
+	cd Java && ./mvn.sh junit-mockito test
+
+[group('java')]
+quarkus:
+	cd Java && ./mvn.sh quarkus -p 8080 quarkus:dev -Dquarkus.http.host=0.0.0.0 -Dquarkus.console.enabled=false
