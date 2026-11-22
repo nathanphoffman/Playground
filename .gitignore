@@ -47,3 +47,6 @@ Hare/qbe/
 
 # NuGet packages built by CSharp/libraries/nuget-package
 *.nupkg
+
+# Personal notes
+techs_to_study.md
